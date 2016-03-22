@@ -34,13 +34,14 @@ void title(String the_title) {
 }
 
 // Create button
-void button(int pin){
+void button(int pin, char * label){
 
   // Set pin as output
   pinMode(pin,OUTPUT);
 
   // Set in button array
   buttons[buttons_index] = pin;
+  buttons_labels[buttons_index] = label;
   buttons_index++;
 
 }
@@ -93,12 +94,17 @@ virtual void root_answer() {
     // Buttons UI
     for (int i = 0; i < buttons_index; i++) {
       addToBuffer("<div class=\"row\">");
+      addToBuffer("<fieldset>");
+      addToBuffer("<legend>");
+      addToBuffer(buttons_labels[i]);
+      addToBuffer("</legend>");
       addToBuffer("<div class=\"col-md-2\"><button class=\"btn btn-block btn-lg btn-primary\" id='btn_on");
       addToBuffer(buttons[i]);
       addToBuffer("'>On</button></div>");
       addToBuffer("<div class=\"col-md-2\"><button class=\"btn btn-block btn-lg btn-danger\" id='btn_off");
       addToBuffer(buttons[i]);
       addToBuffer("'>Off</button></div>");
+      addToBuffer("</fieldset>");
       addToBuffer("</div>");
     }
 
