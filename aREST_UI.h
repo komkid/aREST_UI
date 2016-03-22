@@ -186,6 +186,7 @@ private:
 
   // Buttons array
   int buttons[10];
+  char * buttons_labels[10];
   int buttons_index;
 
   // Buttons array
